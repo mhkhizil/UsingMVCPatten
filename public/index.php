@@ -13,6 +13,7 @@ require_once "../index.php";
         case "/about-us":
             require_once ViewDir."/about.view.php";
               break;
+        default : echo "Not found"
     
    
  }
