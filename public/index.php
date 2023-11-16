@@ -8,12 +8,12 @@ require_once "../index.php";
 // };
  switch ($_SERVER["REQUEST_URI"]) {
     case "/":
-      require_once ViewDir."/home.view.php";
+      view("home",["name"=>"trz"]);
         break;
         case "/about-us":
-            require_once ViewDir."/about.view.php";
+     view("about");
               break;
-        default : echo "Not found"
+        default :  view("notFound");
     
    
  }

@@ -21,3 +21,7 @@ function dd ($data,bool $showType=false):void{
     echo "</pre>";
     die();
     };
+    function view(string $name ,array $data=null):void{
+        $shareData=$data;
+        require_once ViewDir."/$name.view.php";
+    }
