@@ -22,13 +22,15 @@ function dd ($data,bool $showType=false):void{
     die();
     };
     function view(string $name ,array $data=null):void{
+        //array to variable
         if (!is_null($data)) {
              foreach ($data as $key => $value) {
+                //dynamic variable name
                 ${$key}=$value;
               
              }
             # code...
-        }
-        $shareData=$data;
+        };
+       
         require_once ViewDir."/$name.view.php";
     }

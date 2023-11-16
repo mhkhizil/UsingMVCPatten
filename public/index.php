@@ -8,7 +8,7 @@ require_once "../index.php";
 // };
  switch ($_SERVER["REQUEST_URI"]) {
     case "/":
-      view("home",["name"=>"trz"]);
+      view("home",["myName"=>"trz"]);
         break;
         case "/about-us":
      view("about");
