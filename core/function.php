@@ -22,6 +22,13 @@ function dd ($data,bool $showType=false):void{
     die();
     };
     function view(string $name ,array $data=null):void{
+        if (!is_null($data)) {
+             foreach ($data as $key => $value) {
+                ${$key}=$value;
+              
+             }
+            # code...
+        }
         $shareData=$data;
         require_once ViewDir."/$name.view.php";
     }
