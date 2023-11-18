@@ -34,3 +34,6 @@ function dd ($data,bool $showType=false):void{
        
         require_once ViewDir."/$name.view.php";
     }
+    function controller(string $controllerName):void{
+        
+    }
