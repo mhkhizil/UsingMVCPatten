@@ -14,7 +14,7 @@ require_once "../index.php";
      view("about");
               break;
               case "/list":
-                view("list/index");
+                controller("list@index");
                          break;
         default :  view("notFound");
     

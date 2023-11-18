@@ -34,9 +34,10 @@ function dd ($data,bool $showType=false):void{
        
         require_once ViewDir."/$name.view.php";
     }
+    //This function will be call within route(index.php) to use function inside a controller file that will in turn call view 
     function controller(string $controllerName):void{
         $controllerNameArray=explode("@",$controllerName);
-        require_once ControllerDir."./$controllerNameArray[0].controller.php";
+        require_once ControllerDir."/$controllerNameArray[0].controller.php";
         //dynamic function call
         call_user_func($controllerNameArray[1]);
     }
