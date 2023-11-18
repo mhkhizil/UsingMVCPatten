@@ -35,5 +35,8 @@ function dd ($data,bool $showType=false):void{
         require_once ViewDir."/$name.view.php";
     }
     function controller(string $controllerName):void{
-        
+        $controllerNameArray=explode("@",$controllerName);
+        require_once ControllerDir."./$controllerNameArray[0].controller.php";
+        //dynamic function call
+        call_user_func($controllerNameArray[1]);
     }
