@@ -29,7 +29,7 @@ function dd ($data,bool $showType=false):void{
                 ${$key}=$value;
               
              }
-            # code...
+           
         };
        
         require_once ViewDir."/$name.view.php";

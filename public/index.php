@@ -13,6 +13,9 @@ require_once "../index.php";
         case "/about-us":
      view("about");
               break;
+              case "/list":
+                view("list/index");
+                         break;
         default :  view("notFound");
     
    
