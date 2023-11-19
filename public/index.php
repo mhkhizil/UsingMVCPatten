@@ -22,12 +22,18 @@ $path=$uriArr["path"];
     case "/list-create":
       controller("list@create");
         break;
-        case "/list-store" && $_SERVER["REQUEST_METHOD"]==="POST":
+        case "/list-store" :
           controller("list@store");
             break;
             case "/list-delete":
               controller("list@delete");
                 break;
+                case "/list-edit":
+                  controller("list@edit");
+                    break;
+                    case "/list-update":
+                      controller("list@update");
+                        break;
     default :  view("notFound");
     
    

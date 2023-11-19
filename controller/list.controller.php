@@ -27,3 +27,22 @@ function delete(){
  $query=mysqli_query($GLOBALS['con'],$sql);
  redirect(route('list'));
 }
+function edit () {
+    $name=$_GET['name'];
+    $money=$_GET['money'];
+    $id=$_GET['id'];
+    $sql="SELECT * FROM testing WHERE id=$id";
+    $query=mysqli_query($GLOBALS["con"],$sql);
+    $list=mysqli_fetch_assoc($query);
+    return view('list/edit',['list'=>$list]);
+  
+}
+function update (){
+    $name=$_POST['name'];
+    $money=$_POST['money'];
+    $id=$_POST['id'];
+      $sql="UPDATE testing SET sname='$name',money='$money' WHERE id=$id";
+    $query=mysqli_query($GLOBALS['con'],$sql);
+    redirect(route('list'));
+
+}
