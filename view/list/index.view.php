@@ -3,7 +3,7 @@
 
 <h1>Lists</h1>
 <div class=" d-flex  justify-content-between mb-3">
-<a href="" class=" btn btn-outline-primary">Create</a>
+<a href="/list-create" class=" btn btn-outline-primary">Create</a>
 </div>
 <table class=" table table-bordered">
     <thead>
