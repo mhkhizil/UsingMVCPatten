@@ -8,4 +8,7 @@ function index(){
         # code...
     }
     return view("list/index",["lists"=>$lists]);
+};
+function create(){
+    view('list/create');
 }

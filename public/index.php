@@ -10,13 +10,16 @@ require_once "../index.php";
     case "/":
       view("home",["myName"=>"trz"]);
         break;
-        case "/about-us":
+    case "/about-us":
      view("about");
-              break;
-              case "/list":
-                controller("list@index");
-                         break;
-        default :  view("notFound");
+        break;
+    case "/list":
+    controller("list@index");
+    break;
+    case "/list-create":
+      controller("list@create");
+        break;
+    default :  view("notFound");
     
    
  }
