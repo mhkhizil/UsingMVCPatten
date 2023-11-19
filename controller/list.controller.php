@@ -17,6 +17,13 @@ function store(){
     $money=$_POST["money"];
     $sql="INSERT INTO testing(sname,money) VALUES('$name','$money')";
     $query=mysqli_query($GLOBALS['con'],$sql);
+  redirect(route("list"));
 
 
+};
+function delete(){
+ $id=$_GET['id'];
+ $sql="DELETE  FROM testing WHERE id=$id";
+ $query=mysqli_query($GLOBALS['con'],$sql);
+ redirect(route('list'));
 }

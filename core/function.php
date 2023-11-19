@@ -41,6 +41,13 @@ function dd ($data,bool $showType=false):void{
         //dynamic function call
         call_user_func($controllerNameArray[1]);
     };
-    function route(string $path):string{
-return url($path);
+    function route(string $path,array $queries=null):string{
+        $url=url($path);
+        if (!is_null($queries)) {
+            $url.=http_build_query($queries);
+        }
+    return $url;
+    };
+    function redirect(string $url ):void{
+        header("LOCATION:".$url);
     }
