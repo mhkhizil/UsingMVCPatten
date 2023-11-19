@@ -7,3 +7,4 @@
     <link rel="stylesheet" href="<?=url("/css/bootstrap.css")?>">
 </head>
 <body>
+    <div class=" m-5">
