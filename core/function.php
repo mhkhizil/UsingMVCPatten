@@ -44,7 +44,7 @@ function dd ($data,bool $showType=false):void{
     function route(string $path,array $queries=null):string{
         $url=url($path);
         if (!is_null($queries)) {
-            $url.=http_build_query($queries);
+            $url.='?'.http_build_query($queries);
         }
     return $url;
     };

@@ -22,7 +22,7 @@
     <td><?=$list['sname']?></td>
     <td><?=$list['money']?></td>
     <td>
-        <a href="<?= route("list-delete?id=".$list['id'])?>" class=" btn btn-outline-danger btn-sm">Delete</a>
+        <a href="<?= route("list-delete",['id'=>$list['id']])?>" class=" btn btn-outline-danger btn-sm">Delete</a>
     </td>
     <td><?=$list['created_at']?></td>
 </tr>
