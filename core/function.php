@@ -40,4 +40,7 @@ function dd ($data,bool $showType=false):void{
         require_once ControllerDir."/$controllerNameArray[0].controller.php";
         //dynamic function call
         call_user_func($controllerNameArray[1]);
+    };
+    function route(string $path):string{
+return url($path);
     }

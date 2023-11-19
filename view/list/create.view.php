@@ -3,7 +3,7 @@
 
 <h1>Create New Lists</h1>
 <div class=" d-flex  justify-content-between mb-3">
-<a href="/list" class=" btn btn-outline-primary">All lists</a>
+<a href="<?=route("list")?>" class=" btn btn-outline-primary">All lists</a>
 </div>
 
 
