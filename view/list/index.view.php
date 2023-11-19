@@ -19,7 +19,7 @@
 <?php foreach($lists as $list): ?>
 <tr>
     <td><?=$list['id']?></td>
-    <td><?=$list['name']?></td>
+    <td><?=$list['sname']?></td>
     <td><?=$list['money']?></td>
     <td></td>
     <td><?=$list['created_at']?></td>

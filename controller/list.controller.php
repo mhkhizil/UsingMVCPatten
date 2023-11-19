@@ -11,4 +11,12 @@ function index(){
 };
 function create(){
     view('list/create');
+};
+function store(){
+    $name=$_POST['name'];
+    $money=$_POST["money"];
+    $sql="INSERT INTO testing(sname,money) VALUES('$name','$money')";
+    $query=mysqli_query($GLOBALS['con'],$sql);
+
+
 }

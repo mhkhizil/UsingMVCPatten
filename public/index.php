@@ -22,6 +22,9 @@ $path=$uriArr["path"];
     case "/list-create":
       controller("list@create");
         break;
+        case "/list-store":
+          controller("list@store");
+            break;
     default :  view("notFound");
     
    
