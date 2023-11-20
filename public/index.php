@@ -9,34 +9,36 @@ require_once "../index.php";
 $uri=$_SERVER["REQUEST_URI"];
 $uriArr=parse_url($uri);
 $path=$uriArr["path"];
- switch ($path) {
-    case "/":
-      view("home",["myName"=>"trz"]);
-        break;
-    case "/about-us":
-     view("about");
-        break;
-    case "/list":
-    controller("list@index");
-    break;
-    case "/list-create":
-      controller("list@create");
-        break;
-        case "/list-store" :
-          controller("list@store");
-            break;
-            case "/list-delete":
-              controller("list@delete");
-                break;
-                case "/list-edit":
-                  controller("list@edit");
-                    break;
-                    case "/list-update":
-                      controller("list@update");
-                        break;
-    default :  view("notFound");
+//  switch ($path) {
+//     case "/":
+//       view("home",["myName"=>"trz"]);
+//         break;
+//     case "/about-us":
+//      view("about");
+//         break;
+//     case "/list":
+//     controller("list@index");
+//     break;
+//     case "/list-create":
+//       controller("list@create");
+//         break;
+//         case "/list-store" :
+//           controller("list@store");
+//             break;
+//             case "/list-delete":
+//               controller("list@delete");
+//                 break;
+//                 case "/list-edit":
+//                   controller("list@edit");
+//                     break;
+//                     case "/list-update":
+//                       controller("list@update");
+//                         break;
+//     default :  view("notFound");
     
    
- }
+//  }
+const Routes=[
 
+];
 // dd($con);
