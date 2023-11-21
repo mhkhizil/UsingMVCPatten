@@ -6,9 +6,7 @@ require_once "../index.php";
 // }elseif($_SERVER["REQUEST_URI"]==="/about-us"){
 // require_once ViewDir."/about.view.php";
 // };
-$uri=$_SERVER["REQUEST_URI"];
-$uriArr=parse_url($uri);
-$path=$uriArr["path"];
+
 //  switch ($path) {
 //     case "/":
 //       view("home",["myName"=>"trz"]);
@@ -38,7 +36,5 @@ $path=$uriArr["path"];
     
    
 //  }
-const Routes=[
 
-];
 // dd($con);
