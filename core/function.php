@@ -51,7 +51,7 @@ function dd ($data,bool $showType=false):void{
     function redirect(string $url ):void{
         header("LOCATION:".$url);
     };
-    function checkReqMethod(string $methodName){
+    function checkReqMethod(string $methodName):bool{
         $result=false;
         $methodName=strtoupper($methodName);
         $serverRequestMethod=$_SERVER["REQUEST_METHOD"];
@@ -64,3 +64,5 @@ function dd ($data,bool $showType=false):void{
         };;
         return $result;
     }
+    ////database reusable functions 
+    
