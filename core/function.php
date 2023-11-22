@@ -57,6 +57,10 @@ function dd ($data,bool $showType=false):void{
         $serverRequestMethod=$_SERVER["REQUEST_METHOD"];
         if ($methodName==="POST" && $serverRequestMethod === "POST") {
            $result=true;
-        };
+        }elseif ($methodName==="PUT" && $serverRequestMethod === "POST" && !empty($_POST["_method"]) && strtoupper($_POST["_method"])==="PUT") {
+            $result=true;
+        }elseif ($methodName==="DELETE" && $serverRequestMethod === "POST" && !empty($_POST["_method"]) && strtoupper($_POST["_method"])==="DELETE") {
+            $result=true;
+        };;
         return $result;
     }

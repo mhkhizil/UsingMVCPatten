@@ -23,7 +23,12 @@
     <td><?=$list['money']?></td>
     <td>
     <a href="<?= route("list-edit",['id'=>$list['id']])?>" class=" btn btn-outline-info btn-sm">Edit</a>
-        <a href="<?= route("list-delete",['id'=>$list['id']])?>" class=" btn btn-outline-danger btn-sm">Delete</a>
+    <form action="<?= route("list-delete")?>" method="post" class=" d-inline">
+<input type="hidden" name="id" value="<?= $list['id']?>">
+<input type="hidden" name="_method" value="delete">
+<button class=" btn btn-outline-danger btn-sm">Delete</button>
+</form>
+   
     </td>
     <td><?=$list['created_at']?></td>
 </tr>

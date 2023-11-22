@@ -8,6 +8,7 @@
 </div>
 <div class="border rounded-4 p-5">
 <form action="<?=route('list-update')?>" method="post">
+<input type="text" hidden name="_method" value="put">
 <input type="text" hidden name="id" id="" value="<?=$list['id']?>">
     <div class=" row align-items-end">
         <div class="col">

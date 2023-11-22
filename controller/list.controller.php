@@ -22,7 +22,7 @@ function store(){
 
 };
 function delete(){
- $id=$_GET['id'];
+ $id=$_POST['id'];
  $sql="DELETE  FROM testing WHERE id=$id";
  $query=mysqli_query($GLOBALS['con'],$sql);
  redirect(route('list'));
@@ -41,6 +41,7 @@ function update (){
     $name=$_POST['name'];
     $money=$_POST['money'];
     $id=$_POST['id'];
+    // dd($_POST["id"]);
       $sql="UPDATE testing SET sname='$name',money='$money' WHERE id=$id";
     $query=mysqli_query($GLOBALS['con'],$sql);
     redirect(route('list'));
