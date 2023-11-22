@@ -50,4 +50,13 @@ function dd ($data,bool $showType=false):void{
     };
     function redirect(string $url ):void{
         header("LOCATION:".$url);
+    };
+    function checkReqMethod(string $methodName){
+        $result=false;
+        $methodName=strtoupper($methodName);
+        $serverRequestMethod=$_SERVER["REQUEST_METHOD"];
+        if ($methodName==="POST" && $serverRequestMethod === "POST") {
+           $result=true;
+        };
+        return $result;
     }

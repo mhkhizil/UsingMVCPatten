@@ -14,8 +14,11 @@ const Routes=[
     "/list-delete"=>["delete","list@delete"]
 
   ];
-  if (array_key_exists($path,Routes)) {
-  controller(Routes[$path]);
-  }else{
+  if (array_key_exists($path,Routes) && is_array(Routes[$path] && checkReqMethod(Routes[$path][0]))) {
+  dd(Routes[$path]);
+  }elseif(array_key_exists($path,Routes) && !is_array(Routes[$path])){
+    controller(Routes[$path]);
+  }
+  else{
     view("notFound");
   }
