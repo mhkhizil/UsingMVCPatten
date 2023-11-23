@@ -1,4 +1,5 @@
 </div>
-<script src="<?= url("js/bootstrap.js")?>"></script>
+<script src="<?= url("js/bootstrap.js") ?>"></script>
 </body>
+
 </html>

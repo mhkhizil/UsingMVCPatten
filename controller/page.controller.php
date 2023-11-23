@@ -1,7 +1,9 @@
-<?php 
-function home (){
-    return view("home",["myName"=>"trz"]);
+<?php
+function home()
+{
+    return view("home", ["myName" => "trz"]);
 };
-function about (){
+function about()
+{
     return  view("about");
 }
