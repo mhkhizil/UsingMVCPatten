@@ -31,9 +31,8 @@ function edit()
     // $money = $_GET['money'];
     $id = $_GET['id'];
     $sql = "SELECT * FROM testing WHERE id=$id";
-    $query = run($sql);
-    $list = mysqli_fetch_assoc($query);
-    return view('list/edit', ['list' => $list]);
+   
+    return view('list/edit', ['list' => first($sql)]);
 }
 function update()
 {

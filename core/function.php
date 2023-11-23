@@ -82,4 +82,10 @@ function all(string $sql): array
         $lists[] = $rows;
     };
     return $lists;
+};
+function first(string $sql): array
+{
+    $query = run($sql);
+    $list = mysqli_fetch_assoc($query);
+    return $list;
 }
