@@ -69,10 +69,15 @@ function checkReqMethod(string $methodName): bool
     return $result;
 }
 ////database reusable functions 
-function run(string $sql): object|bool
+function run(string $sql, bool $closeConnection = true): object|bool
 {
-    $query = mysqli_query($GLOBALS["con"], $sql);
-    return $query;
+    try {
+        $query = mysqli_query($GLOBALS["con"], $sql);
+        $closeConnection && mysqli_close($GLOBALS["con"]);
+        return $query;
+    } catch (Exception $e) {
+        dd($e);
+    }
 };
 function all(string $sql): array
 {

@@ -19,7 +19,7 @@ if (array_key_exists($path, Routes) && is_array(Routes[$path]) && checkReqMethod
 } elseif (array_key_exists($path, Routes) && !is_array(Routes[$path])) {
   controller(Routes[$path]);
 } else {
-  dd($_SERVER);
+  // dd($_SERVER);
 
   view("notFound");
 }

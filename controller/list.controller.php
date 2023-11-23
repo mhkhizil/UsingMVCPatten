@@ -2,6 +2,11 @@
 function index()
 {
     $sql = "SELECT * FROM testing";
+    // dd($_GET['q']);
+    if (!empty($_GET['q'])) {
+        $q=$_GET['q'];
+      $sql.=" WHERE sname LIKE '%$q%'";
+    }
     //php mhr global scope ka var twy ko locla scope htl mhr pyn khw tone lo m aya 
 
     return view("list/index", ["lists" => all($sql)]);
