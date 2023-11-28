@@ -105,8 +105,14 @@ function alert(string $message, string $color = "success"): string
 function setSession(string $message,string $key='message'):void{
 $_SESSION[$key]=$message;
 };
+function hasSession (string $key="message"):bool{
+    if (!empty($_SESSION[$key])) {
+        return true;
+    }
+    return false;
+}
 function showSession(string $key='message'):string{
     $message=$_SESSION[$key];
-    unset($message);
-    return $_SESSION[$key];
+    unset($_SESSION[$key]);
+    return $message;
 }
