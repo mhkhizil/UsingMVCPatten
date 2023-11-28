@@ -94,3 +94,19 @@ function first(string $sql): array
     $list = mysqli_fetch_assoc($query);
     return $list;
 }
+///alert message
+function alert(string $message, string $color = "success"): string
+{
+    return "<div class=' alert alert-$color  text-dark'>
+    $message
+    </div>";
+};
+//session function start 
+function setSession(string $message,string $key='message'):void{
+$_SESSION[$key]=$message;
+};
+function showSession(string $key='message'):string{
+    $message=$_SESSION[$key];
+    unset($message);
+    return $_SESSION[$key];
+}
