@@ -50,8 +50,9 @@ function route(string $path, array $queries = null): string
     }
     return $url;
 };
-function redirect(string $url): void
+function redirect(string $url,string $message =null): void
 {
+    if(!is_null($message)) setSession($message);
     header("LOCATION:" . $url);
 };
 function checkReqMethod(string $methodName): bool
@@ -102,17 +103,19 @@ function alert(string $message, string $color = "success"): string
     </div>";
 };
 //session function start 
-function setSession(string $message,string $key='message'):void{
-$_SESSION[$key]=$message;
+function setSession(string $message, string $key = 'message'): void
+{
+    $_SESSION[$key] = $message;
 };
-function hasSession (string $key="message"):bool{
-    if (!empty($_SESSION[$key])) {
-        return true;
-    }
+function hasSession(string $key = "message"): bool
+{
+    if (!empty($_SESSION[$key]))  return true;
+
     return false;
 }
-function showSession(string $key='message'):string{
-    $message=$_SESSION[$key];
+function showSession(string $key = 'message'): string
+{
+    $message = $_SESSION[$key];
     unset($_SESSION[$key]);
     return $message;
 }

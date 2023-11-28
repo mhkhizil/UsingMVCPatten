@@ -1,4 +1,4 @@
 <?php
 if (hasSession()) {
-   alert(showSession());
+   echo alert(showSession());
 }
