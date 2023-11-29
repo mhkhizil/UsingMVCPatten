@@ -26,9 +26,11 @@ function view(string $name, array $data = null): void
 {
     //array to variable
     if (!is_null($data)) {
+        // dd($data);
         foreach ($data as $key => $value) {
             //dynamic variable name
             ${$key} = $value;
+            // dd(${$key});
         }
     };
 
@@ -70,7 +72,7 @@ function checkReqMethod(string $methodName): bool
     return $result;
 }
 ////database reusable functions 
-function run(string $sql, bool $closeConnection = true): object|bool
+function run(string $sql, bool $closeConnection = false): object|bool
 {
     try {
         $query = mysqli_query($GLOBALS["con"], $sql);

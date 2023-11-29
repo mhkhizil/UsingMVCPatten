@@ -3,6 +3,7 @@ function index()
 {
     $sql = "SELECT * FROM testing";
     // dd($_GET['q']);
+    //for search bar
     if (!empty($_GET['q'])) {
         $q = $_GET['q'];
         $sql .= " WHERE sname LIKE '%$q%'";
@@ -12,11 +13,32 @@ function index()
     $total_pages = $row_total / $limit;
     $current_pages = isset($_GET["page"]) ? $_GET['page'] : 1;
     $offset = ($current_pages - 1) * $limit;
-    $sql.="LIMIT $offset,$limit";
-    dd(all($sql));
+    $sql .= " LIMIT $offset,$limit";
+    $links = [];
+    //link for pagination
+    for ($i = 1; $i <= $total_pages; $i++) {
+        $links[] = [
+            'url' => url() . $GLOBALS['path'] . '?page=' . $i,
+            'isActive' => $i == $current_pages ? 'active' : '',
+            'pageNumber'=>$i,
+
+        ];
+    };
+    //data for pagination
+    $lists = [
+        'row_total' => $row_total,
+        'limit' => $limit,
+        'total_pages' => $total_pages,
+        'current_pages' => $current_pages,
+        'data' => all($sql),
+        'links' => $links
+    ];
+
+
+
     //php mhr global scope ka var twy ko locla scope htl mhr pyn khw tone lo m aya 
 
-    return view("list/index", ["lists" => all($sql)]);
+    return view("list/index", ["lists" => $lists]);
 };
 
 
