@@ -96,6 +96,38 @@ function first(string $sql): array
     $query = run($sql);
     $list = mysqli_fetch_assoc($query);
     return $list;
+};
+function pagination(string $sql, int $limit=10):array{
+    $row_total = first(str_replace('*', 'COUNT(id) AS total', $sql))["total"];//replace * with COUNT(id) AS total in   above $sql 
+    // $limit = 10;
+    $total_pages =ceil( $row_total / $limit);
+    $current_pages = isset($_GET["page"]) ? $_GET['page'] : 1;
+    $offset = ($current_pages - 1) * $limit;
+    $sql .= " LIMIT $offset,$limit";
+
+    $links = [];
+    //link for pagination
+    for ($i = 1; $i <= $total_pages; $i++) {
+        $queries=$_GET;
+        $queries['page']=$i;
+
+        $links[] = [
+            'url' => url() . $GLOBALS['path'] .'?'.http_build_query($queries),
+            'isActive' => $i == $current_pages ? 'active' : '',
+            'pageNumber' => $i,
+
+        ];
+    };
+    //data for pagination
+    $lists = [
+        'row_total' => $row_total,
+        'limit' => $limit,
+        'total_pages' => $total_pages,
+        'current_pages' => $current_pages,
+        'data' => all($sql),
+        'links' => $links
+    ];
+    return $lists;
 }
 ///alert message
 function alert(string $message, string $color = "success"): string
@@ -104,6 +136,9 @@ function alert(string $message, string $color = "success"): string
     $message
     </div>";
 };
+function paginationUI(){
+    
+}
 //session function start 
 function setSession(string $message, string $key = 'message'): void
 {
