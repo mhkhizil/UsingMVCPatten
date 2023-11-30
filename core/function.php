@@ -52,9 +52,9 @@ function route(string $path, array $queries = null): string
     }
     return $url;
 };
-function redirect(string $url,string $message =null): void
+function redirect(string $url, string $message = null): void
 {
-    if(!is_null($message)) setSession($message);
+    if (!is_null($message)) setSession($message);
     header("LOCATION:" . $url);
 };
 function checkReqMethod(string $methodName): bool
@@ -97,10 +97,11 @@ function first(string $sql): array
     $list = mysqli_fetch_assoc($query);
     return $list;
 };
-function pagination(string $sql, int $limit=10):array{
-    $row_total = first(str_replace('*', 'COUNT(id) AS total', $sql))["total"];//replace * with COUNT(id) AS total in   above $sql 
+function pagination(string $sql, int $limit = 10): array
+{
+    $row_total = first(str_replace('*', 'COUNT(id) AS total', $sql))["total"]; //replace * with COUNT(id) AS total in   above $sql 
     // $limit = 10;
-    $total_pages =ceil( $row_total / $limit);
+    $total_pages = ceil($row_total / $limit);
     $current_pages = isset($_GET["page"]) ? $_GET['page'] : 1;
     $offset = ($current_pages - 1) * $limit;
     $sql .= " LIMIT $offset,$limit";
@@ -108,11 +109,11 @@ function pagination(string $sql, int $limit=10):array{
     $links = [];
     //link for pagination
     for ($i = 1; $i <= $total_pages; $i++) {
-        $queries=$_GET;
-        $queries['page']=$i;
+        $queries = $_GET;
+        $queries['page'] = $i;
 
         $links[] = [
-            'url' => url() . $GLOBALS['path'] .'?'.http_build_query($queries),
+            'url' => url() . $GLOBALS['path'] . '?' . http_build_query($queries),
             'isActive' => $i == $current_pages ? 'active' : '',
             'pageNumber' => $i,
 
@@ -136,8 +137,23 @@ function alert(string $message, string $color = "success"): string
     $message
     </div>";
 };
-function paginationUI(){
-    
+//Pagination Ui function component
+function paginationUI($lists)
+{
+    $links = "";
+    foreach ($lists['links'] as $key => $value) {
+        $links .= " <li class='page-item'><a class='page-link " . $value["isActive"] . "' href='" . $value['url'] . "'>" . $value['pageNumber'] . "</a></li>";
+    }
+    return "<div class=' d-flex align-items-center justify-content-between'>
+    <p class=' mb-0'>Total rows: " . $lists['row_total'] . "</p>
+    <nav aria-label='Page navigation example'>
+        <ul class='pagination'>
+           
+          ".$links."
+       
+        </ul>
+    </nav>
+</div>";
 }
 //session function start 
 function setSession(string $message, string $key = 'message'): void
@@ -155,4 +171,9 @@ function showSession(string $key = 'message'): string
     $message = $_SESSION[$key];
     unset($_SESSION[$key]);
     return $message;
-}
+};
+ //color logger 
+ function logger(string $message,int $colorCode=32):void{
+    echo "\e[39m[LOG]-"."\e[{$colorCode}m".$message."\n";
+
+ };

@@ -42,24 +42,6 @@
 
 <?php endforeach; ?>
 </table>
-<div class=" d-flex align-items-center justify-content-between">
-    <p class=" mb-0">Total rows: <?= $lists['row_total'] ?></p>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <!-- <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li> -->
-            <?php foreach ($lists['links'] as $key => $value) : ?>
-                <li class="page-item"><a class="page-link <?= $value["isActive"] ?>" href="<?= $value['url'] ?>"><?= $value['pageNumber'] ?></a></li>
-            <?php endforeach; ?>
-            <!-- <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li> -->
-        </ul>
-    </nav>
-</div>
+
+<?=paginationUI($lists)?>
 <?php require_once ViewDir . "/template/footer.php"; ?>
