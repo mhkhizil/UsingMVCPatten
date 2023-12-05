@@ -1,8 +1,8 @@
 <?php require_once ViewDir . "/template/header.php"; ?>
 
-<h1>Lists</h1>
+<h1>Inventories</h1>
 <div class=" d-flex  justify-content-between mb-3">
-    <a href="<?= route("list-create") ?>" class=" btn btn-outline-primary">Create</a>
+    <a href="<?= route("inventory-create") ?>" class=" btn btn-outline-primary">Create</a>
     <form action="" method="get">
         <div class="input-group">
             <input type="text" name="q" value="<?php if (isset($_GET['q'])) : ?><?= $_GET['q'] ?>  <?php endif; ?>" class="   form-control  rounded-4 mx-2">
