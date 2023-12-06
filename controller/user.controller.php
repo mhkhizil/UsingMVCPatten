@@ -8,13 +8,13 @@ function index()
         $q = $_GET['q'];
         $sql .= " WHERE sname LIKE '%$q%'";
     }
- 
+
 
 
 
     //php mhr global scope ka var twy ko locla scope htl mhr pyn khw tone lo m aya 
 
-    return view("list/index", ["lists" => pagination($sql,100)]);
+    return view("list/index", ["lists" => pagination($sql, 100)]);
 };
 
 
@@ -23,15 +23,16 @@ function index()
 
 function store()
 {
+    return responseJson($_POST);
     $name = $_POST['name'];
     $email = $_POST["email"];
     $gender = $_POST['gender'];
     $address = $_POST["address"];
-    $sql = "INSERT INTO users(sname,gender,email,address) VALUES('$name',' $gender','$email','$address')";
-    run($sql);
+
+    run("INSERT INTO users(sname,gender,email,address) VALUES('$name',' $gender','$email','$address')");
     // setSession("File stored successfully!");
     // dd(showSession());
-   return  redirect(route("list"), "File stored successfully!");
+    return  responseJson('Data stored successfully',201)
 };
 function delete()
 {
