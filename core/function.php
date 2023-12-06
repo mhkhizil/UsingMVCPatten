@@ -214,3 +214,15 @@ function logger(string $message, int $colorCode = 32): void
 {
     echo "\e[39m[LOG]-" . "\e[{$colorCode}m" . $message . "\n";
 };
+//api response in json file 
+function responseJson(mixed $data,int $status=200):string
+{
+    
+    header("Content-type:Application/json");
+    http_response_code($status);
+    if(is_array($data)){
+       return print(json_encode($data));
+    }
+  return print(json_encode(["message"=>$data]));
+
+};
