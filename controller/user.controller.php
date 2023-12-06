@@ -27,7 +27,7 @@ function store()
     $email = $_POST["email"];
     $gender = $_POST['gender'];
     $address = $_POST["address"];
-    $sql = "INSERT INTO users(sname,email) VALUES('$name','$email',' $gender','  $address')";
+    $sql = "INSERT INTO users(sname,gender,email,address) VALUES('$name',' $gender','$email','$address')";
     run($sql);
     // setSession("File stored successfully!");
     // dd(showSession());
@@ -58,7 +58,7 @@ function update()
     $address = $_POST["address"];
     $id = $_POST['id'];
     // dd($_POST["id"]);
-    $sql = "UPDATE users SET sname='$name',email='$email',gender='$gender',address='$address' WHERE id=$id";
+    $sql = "UPDATE users SET sname='$name',gender='$gender',email='$email',address='$address' WHERE id=$id";
     run($sql);
     // setSession("File updated successfully!");
     return redirect($_SERVER["HTTP_REFERER"], "File updated successfully!");
