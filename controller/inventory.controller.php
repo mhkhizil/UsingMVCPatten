@@ -8,13 +8,13 @@ function index()
         $q = $_GET['q'];
         $sql .= " WHERE sname LIKE '%$q%'";
     }
- 
+
 
 
 
     //php mhr global scope ka var twy ko locla scope htl mhr pyn khw tone lo m aya 
 
-    return view("inventory/index", ["lists" => pagination($sql,100)]);
+    return view("inventory/index", ["lists" => pagination($sql, 100)]);
 };
 
 
@@ -22,17 +22,17 @@ function index()
 // dd($row_total);
 function create()
 {
-   return view('inventory/create');
+    return view('inventory/create');
 };
 function store()
 {
     $name = $_POST['name'];
-    $money = $_POST["money"];
-    $sql = "INSERT INTO inventories(sname,money) VALUES('$name','$money')";
-    run($sql);
+    $stock = $_POST["stock"];
+    $price = $_POST["price"];
+    run("INSERT INTO inventories(sname,price,stock) VALUES('$name','$price','$stock')");
     // setSession("File stored successfully!");
     // dd(showSession());
-   return  redirect(route("list"), "File stored successfully!");
+    return  redirect(route("inventory"), "Item stored successfully!");
 };
 function delete()
 {
@@ -40,7 +40,7 @@ function delete()
     $sql = "DELETE  FROM inventories WHERE id=$id";
     run($sql);
     // setSession("File deleted successfully!");
-    return redirect($_SERVER["HTTP_REFERER"], "File deleted successfully!"); //server htl ka htttp referer ka nout sone twr htr dl link ko pyn po py 
+    return redirect($_SERVER["HTTP_REFERER"], "Item deleted successfully!"); //server htl ka htttp referer ka nout sone twr htr dl link ko pyn po py 
 }
 function edit()
 {
@@ -54,11 +54,12 @@ function edit()
 function update()
 {
     $name = $_POST['name'];
-    $money = $_POST['money'];
+    $stock = $_POST["stock"];
+    $price = $_POST["price"];
     $id = $_POST['id'];
     // dd($_POST["id"]);
-    $sql = "UPDATE inventories SET sname='$name',money='$money' WHERE id=$id";
+    $sql = "UPDATE inventories SET sname='$name',price='$price',stock='$stock' WHERE id=$id";
     run($sql);
     // setSession("File updated successfully!");
-    return redirect($_SERVER["HTTP_REFERER"], "File updated successfully!");
+    return redirect(route("inventory"), "Item updated successfully!");
 }

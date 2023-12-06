@@ -118,7 +118,7 @@ function createTable(string  $tblName, ...$column): void
     `created_at` timestamp NULL DEFAULT current_timestamp(),
     `updated_at` timestamp NULL DEFAULT current_timestamp(),
     PRIMARY KEY (`id`)
-  ) ENGINE=InnoDB AUTO_INCREMENT=1047 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;";
+  ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;";
     run($sql);
     logger("New " . $tblName . " table is created successfully!");
 }

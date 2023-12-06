@@ -16,7 +16,8 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Money</th>
+            <th>Price</th>
+            <th>Stock</th>
             <th>Control</th>
             <th>Created at</th>
         </tr>
@@ -26,10 +27,11 @@
             <tr>
                 <td><?= $list['id'] ?></td>
                 <td><?= $list['sname'] ?></td>
-                <td><?= $list['money'] ?></td>
+                <td><?= $list['price'] ?></td>
+                <td><?= $list['stock'] ?></td>
                 <td>
-                    <a href="<?= route("list-edit", ['id' => $list['id']]) ?>" class=" btn btn-outline-info btn-sm">Edit</a>
-                    <form action="<?= route("list-delete") ?>" method="post" class=" d-inline">
+                    <a href="<?= route("inventory-edit", ['id' => $list['id']]) ?>" class=" btn btn-outline-info btn-sm">Edit</a>
+                    <form action="<?= route("inventory-delete") ?>" method="post" class=" d-inline">
                         <input type="hidden" name="id" value="<?= $list['id'] ?>">
                         <input type="hidden" name="_method" value="delete">
                         <button class=" btn btn-outline-danger btn-sm">Delete</button>

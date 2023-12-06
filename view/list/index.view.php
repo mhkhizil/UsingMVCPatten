@@ -6,7 +6,7 @@
     <form action="" method="get">
         <div class="input-group">
             <input type="text" name="q" value="<?php if (isset($_GET['q'])) : ?><?= $_GET['q'] ?>  <?php endif; ?>" class="   form-control  rounded-4 mx-2">
-            <?php if (isset($_GET['q'])) : ?> <a href="<?= route("list") ?>" class=" btn btn-danger rounded-4"> X</a> <?php endif; ?>
+            <?php if (isset($_GET['q'])) : ?> <a href="<?= route("inventory") ?>" class=" btn btn-danger rounded-4"> X</a> <?php endif; ?>
             <button class=" btn btn-primary  rounded-4">Search</button>
         </div>
     </form>
