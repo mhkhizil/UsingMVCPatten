@@ -1,7 +1,7 @@
 <?php
 function index()
 {
-    $sql = "SELECT * FROM testing";
+    $sql = "SELECT * FROM users";
     // dd($_GET['q']);
     //for search bar
     if (!empty($_GET['q'])) {
@@ -24,8 +24,10 @@ function index()
 function store()
 {
     $name = $_POST['name'];
-    $money = $_POST["money"];
-    $sql = "INSERT INTO testing(sname,money) VALUES('$name','$money')";
+    $email = $_POST["email"];
+    $gender = $_POST['gender'];
+    $address = $_POST["address"];
+    $sql = "INSERT INTO users(sname,email) VALUES('$name','$email',' $gender','  $address')";
     run($sql);
     // setSession("File stored successfully!");
     // dd(showSession());
@@ -34,7 +36,7 @@ function store()
 function delete()
 {
     $id = $_POST['id'];
-    $sql = "DELETE  FROM testing WHERE id=$id";
+    $sql = "DELETE  FROM users WHERE id=$id";
     run($sql);
     // setSession("File deleted successfully!");
     return redirect($_SERVER["HTTP_REFERER"], "File deleted successfully!"); //server htl ka htttp referer ka nout sone twr htr dl link ko pyn po py 
@@ -44,17 +46,19 @@ function edit()
     // $name = $_GET['name'];
     // $money = $_GET['money'];
     $id = $_GET['id'];
-    $sql = "SELECT * FROM testing WHERE id=$id";
+    $sql = "SELECT * FROM users WHERE id=$id";
 
     return view('list/edit', ['list' => first($sql)]);
 }
 function update()
 {
     $name = $_POST['name'];
-    $money = $_POST['money'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $address = $_POST["address"];
     $id = $_POST['id'];
     // dd($_POST["id"]);
-    $sql = "UPDATE testing SET sname='$name',money='$money' WHERE id=$id";
+    $sql = "UPDATE users SET sname='$name',email='$email',gender='$gender',address='$address' WHERE id=$id";
     run($sql);
     // setSession("File updated successfully!");
     return redirect($_SERVER["HTTP_REFERER"], "File updated successfully!");
