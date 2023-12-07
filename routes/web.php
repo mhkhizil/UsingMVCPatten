@@ -21,7 +21,8 @@ const Routes = [
   "/inventory-update" => ["put", "inventory@update"],
   "/inventory-delete" => ["delete", "inventory@delete"],
   //route for user api 
-  "/api/user" => "user@index",
+  "/api/users" => "user@index",
+  "/api/user" => "user@show",
   "/api/user-store" => ["post", "user@store"],
   "/api/user-update" => ["put", "user@update"],
   "/api/user-delete" => ["delete", "user@delete"],

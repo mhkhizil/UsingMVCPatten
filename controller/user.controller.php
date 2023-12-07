@@ -14,7 +14,7 @@ function index()
 
     //php mhr global scope ka var twy ko locla scope htl mhr pyn khw tone lo m aya 
 
-    return view("list/index", ["lists" => pagination($sql, 100)]);
+    return responseJson( pagination($sql, 10));
 };
 
 
@@ -31,8 +31,8 @@ function store()
     run("INSERT INTO users(sname,gender,email,address) VALUES('$name','$gender','$email','$address')");
     // setSession("File stored successfully!");
     // dd(showSession());
-
-    return  responseJson("Item stored successfully",201);
+    $currentUser=first("SELECT * FROM users WHERE id={$GLOBALS['con']->insert_id}"); // connetion objects has id that i have inserted latest using sql cmd therefore i retrieve it and run sql cmd to get latest inserted user
+    return  responseJson($currentUser, 201);
 };
 function delete()
 {
