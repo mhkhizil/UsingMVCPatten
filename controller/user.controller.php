@@ -23,16 +23,16 @@ function index()
 
 function store()
 {
-    return responseJson($_POST);
     $name = $_POST['name'];
     $email = $_POST["email"];
     $gender = $_POST['gender'];
     $address = $_POST["address"];
-
-    run("INSERT INTO users(sname,gender,email,address) VALUES('$name',' $gender','$email','$address')");
+    // dd($address);
+    run("INSERT INTO users(sname,gender,email,address) VALUES('$name','$gender','$email','$address')");
     // setSession("File stored successfully!");
     // dd(showSession());
-    return  responseJson('Data stored successfully',201)
+
+    return  responseJson("Item stored successfully",201);
 };
 function delete()
 {
