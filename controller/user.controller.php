@@ -8,19 +8,10 @@ function index()
         $q = $_GET['q'];
         $sql .= " WHERE sname LIKE '%$q%'";
     }
-
-
-
-
     //php mhr global scope ka var twy ko locla scope htl mhr pyn khw tone lo m aya 
-
     return responseJson( pagination($sql, 10));
 };
-
-
-
 // dd($row_total);
-
 function store()
 {
     $name = $_POST['name'];
@@ -36,20 +27,21 @@ function store()
 };
 function delete()
 {
-    $id = $_POST['id'];
+    $id = $_GET['id'];
+
     $sql = "DELETE  FROM users WHERE id=$id";
     run($sql);
     // setSession("File deleted successfully!");
-    return redirect($_SERVER["HTTP_REFERER"], "File deleted successfully!"); //server htl ka htttp referer ka nout sone twr htr dl link ko pyn po py 
+    return responseJson("deleted successfully"); //server htl ka htttp referer ka nout sone twr htr dl link ko pyn po py 
 }
-function edit()
+function show()
 {
     // $name = $_GET['name'];
     // $money = $_GET['money'];
     $id = $_GET['id'];
     $sql = "SELECT * FROM users WHERE id=$id";
 
-    return view('list/edit', ['list' => first($sql)]);
+    return responseJson(first($sql));
 }
 function update()
 {
