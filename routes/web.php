@@ -26,6 +26,12 @@ const Routes = [
   "/api/user-store" => ["post", "user@store"],
   "/api/user-update" => ["put", "user@update"],
   "/api/user-delete" => ["delete", "user@delete"],
+    //route for car api 
+    "/api/cars" => "user@index",
+    "/api/car" => "user@show",
+    "/api/car-store" => ["post", "car@store"],
+    "/api/car-update" => ["put", "car@update"],
+    "/api/car-delete" => ["delete", "car@delete"],
 
 ];
 if (array_key_exists($path, Routes) && is_array(Routes[$path]) && checkReqMethod(Routes[$path][0])) {
