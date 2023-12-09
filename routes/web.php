@@ -27,8 +27,8 @@ const Routes = [
   "/api/user-update" => ["put", "user@update"],
   "/api/user-delete" => ["delete", "user@delete"],
     //route for car api 
-    "/api/cars" => "user@index",
-    "/api/car" => "user@show",
+    "/api/cars" => "cars@index",
+    "/api/car" => "cars@show",
     "/api/car-store" => ["post", "car@store"],
     "/api/car-update" => ["put", "car@update"],
     "/api/car-delete" => ["delete", "car@delete"],

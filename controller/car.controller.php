@@ -1,7 +1,7 @@
 <?php
 function index()
 {
-    $sql = "SELECT * FROM users";
+    $sql = "SELECT * FROM cars";
     // dd($_GET['q']);
     //for search bar
     if (!empty($_GET['q'])) {
@@ -15,15 +15,15 @@ function index()
 function store()
 {
     $name = $_POST['name'];
-    $email = $_POST["email"];
-    $gender = $_POST['gender'];
-    $address = $_POST["address"];
+    $brand = $_POST["brand"];
+    $fuel = $_POST['fuel'];
+    $detailSpec = $_POST["detailSpec"];
     // dd($address);
-    run("INSERT INTO users(sname,gender,email,address) VALUES('$name','$gender','$email','$address')");
+    run("INSERT INTO cars(sname,brand,fuel,detailSpec) VALUES('$name','$brand','$fuel','$detailSpec')");
     // setSession("File stored successfully!");
     // dd(showSession());
-    $currentUser = first("SELECT * FROM users WHERE id={$GLOBALS['con']->insert_id}"); // connetion objects has id that i have inserted latest using sql cmd therefore i retrieve it and run sql cmd to get latest inserted user
-    return  responseJson($currentUser, 201);
+    $currentUser = first("SELECT * FROM cars WHERE id={$GLOBALS['con']->insert_id}"); // connetion objects has id that i have inserted latest using sql cmd therefore i retrieve it and run sql cmd to get latest inserted user
+    return  responseJson($currentUser,201);
 };
 function delete()
 {
