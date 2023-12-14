@@ -70,9 +70,9 @@ function checkReqMethod(string $methodName): bool
     $serverRequestMethod = $_SERVER["REQUEST_METHOD"];
     if ($methodName === "POST" && $serverRequestMethod === "POST") {
         $result = true;
-    } elseif ($methodName === "PUT" &&($serverRequestMethod === "PUT" ||($serverRequestMethod === "POST" && !empty($_POST["_method"]) && strtoupper($_POST["_method"]) === "PUT"))) {
+    } elseif ($methodName === "PUT" && ($serverRequestMethod === "PUT" || ($serverRequestMethod === "POST" && !empty($_POST["_method"]) && strtoupper($_POST["_method"]) === "PUT"))) {
         $result = true;
-    } elseif ($methodName === "DELETE" &&( $serverRequestMethod === "DELETE" || ($serverRequestMethod === "POST" && !empty($_POST["_method"]) && strtoupper($_POST["_method"]) === "DELETE"))) {
+    } elseif ($methodName === "DELETE" && ($serverRequestMethod === "DELETE" || ($serverRequestMethod === "POST" && !empty($_POST["_method"]) && strtoupper($_POST["_method"]) === "DELETE"))) {
         $result = true;
     };;
     return $result;
@@ -114,7 +114,7 @@ function createTable(string  $tblName, ...$column): void
     run($sql);
     $sql = "CREATE TABLE $tblName (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    ".join(',',$column).",
+    " . join(',', $column) . ",
     `created_at` timestamp NULL DEFAULT current_timestamp(),
     `updated_at` timestamp NULL DEFAULT current_timestamp(),
     PRIMARY KEY (`id`)
@@ -123,15 +123,16 @@ function createTable(string  $tblName, ...$column): void
     logger("New " . $tblName . " table is created successfully!");
 }
 //delete all unrelated tables in the db 
-function deleteExistingTable(){
-$tableName=all("show tables");
+function deleteExistingTable()
+{
+    $tableName = all("show tables");
 
-foreach ($tableName as  $table) {
-   
-   run("DROP TABLE IF EXISTS ".$table["Tables_in_sankyitar"]);
-   logger($table["Tables_in_sankyitar"]." table deleted!",31);
-};
-logger("All existing table dropped!",31);
+    foreach ($tableName as  $table) {
+
+        run("DROP TABLE IF EXISTS " . $table["Tables_in_sankyitar"]);
+        logger($table["Tables_in_sankyitar"] . " table deleted!", 31);
+    };
+    logger("All existing table dropped!", 31);
 };
 //logic for pagination
 function pagination(string $sql, int $limit = 10): array
@@ -215,14 +216,22 @@ function logger(string $message, int $colorCode = 32): void
     echo "\e[39m[LOG]-" . "\e[{$colorCode}m" . $message . "\n";
 };
 //api response in json file 
-function responseJson(mixed $data,int $status=200):string
+function responseJson(mixed $data, int $status = 200): string
 {
-    
+
     header("Content-type:Application/json");
     http_response_code($status);
-    if(is_array($data)){
-       return print(json_encode($data));
+    if (is_array($data)) {
+        return print(json_encode($data));
     }
-  return print(json_encode(["message"=>$data]));
-
+    return print(json_encode(["message" => $data]));
 };
+// function use to prevent cross site scripting
+function codeSanitizer(string $str)
+{
+    $str=trim($str);
+    // $str=trim(str_replace("script","",$str),"<></>");
+    // $str=strip_tags($str); this will remove html tags
+    $str = htmlentities($str, ENT_QUOTES); //this will make html tags string and ENT_QUOTES can also prevent SQL injection
+    return $str;
+}

@@ -26,7 +26,7 @@ function create()
 };
 function store()
 {
-    $name = $_POST['name'];
+    $name = codeSanitizer($_POST['name']);
     $money = $_POST["money"];
     $sql = "INSERT INTO testing(sname,money) VALUES('$name','$money')";
     run($sql);
