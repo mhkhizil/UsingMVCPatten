@@ -5,7 +5,7 @@ function index()
     // dd($_GET['q']);
     //for search bar
     if (!empty($_GET['q'])) {
-        $q = $_GET['q'];
+        $q = codeSanitizer($_GET['q'],true);
         $sql .= " WHERE sname LIKE '%$q%'";
     }
  

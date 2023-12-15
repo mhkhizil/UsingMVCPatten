@@ -227,11 +227,14 @@ function responseJson(mixed $data, int $status = 200): string
     return print(json_encode(["message" => $data]));
 };
 // function use to prevent cross site scripting
-function codeSanitizer(string $str)
+function codeSanitizer(string $str, bool $mode = false)
 {
-    $str=trim($str);
+    if ($mode) {
+        $str = strip_tags($str); //this will remove html tags
+    }
+    $str = trim($str);
     // $str=trim(str_replace("script","",$str),"<></>");
-    // $str=strip_tags($str); this will remove html tags
+
     $str = htmlentities($str, ENT_QUOTES); //this will make html tags string and ENT_QUOTES can also prevent SQL injection
     return $str;
 }
