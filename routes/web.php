@@ -6,6 +6,7 @@ $path = $uriArr["path"]; // only path included
 const Routes = [
   "/" => "page@home",
   "/about-us" => "page@about",
+  "/show-session" => "page@ss",
   //route for list
   "/list" => "list@index",
   "/list-create" => "list@create",

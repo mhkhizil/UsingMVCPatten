@@ -9,15 +9,15 @@
         <div class=" row align-items-end">
             <div class="col">
                 <label for=" form-label">Item name</label>
-                <input type="text" class=" form-control" name="name" required>
+                <input type="text" class=" form-control" name="name" >
             </div>
             <div class="col">
                 <label for=" form-label">Price</label>
-                <input type="number" class=" form-control" name="price" required>
+                <input type="number" class=" form-control" name="price" >
             </div>
             <div class="col">
                 <label for=" form-label">Stock</label>
-                <input type="number" class=" form-control" name="stock" required>
+                <input type="number" class=" form-control" name="stock" >
             </div>
             <div class="col">
                 <button class=" btn btn-primary w-100 btn-lg">Add Item</button>

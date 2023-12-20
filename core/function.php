@@ -238,3 +238,22 @@ function codeSanitizer(string $str, bool $mode = false)
     $str = htmlentities($str, ENT_QUOTES); //this will make html tags string and ENT_QUOTES can also prevent SQL injection
     return $str;
 }
+//validation handling functions start
+function setError(string $key, string $message): void
+{
+    $_SESSION['error'][$key] = $message;
+};
+function hasError(string $key ): bool
+{
+    if (!empty($_SESSION['error'][$key]))  return true;
+
+    return false;
+}
+function showError(string $key ): string
+{
+    $message = $_SESSION['error'][$key];
+    unset($_SESSION['error'][$key]);
+    return $message;
+};
+
+//validation handling functions end
