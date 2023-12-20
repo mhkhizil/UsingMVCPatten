@@ -62,6 +62,10 @@ function redirect(string $url, string $message = null): void
     if (!is_null($message)) setSession($message);
     header("LOCATION:" . $url);
 };
+function redirectBackToLatestLocation(string $message = null): void
+{
+    redirect($_SERVER['HTTP_REFERER'], $message);
+}
 //checking which method
 function checkReqMethod(string $methodName): bool
 {
@@ -243,17 +247,26 @@ function setError(string $key, string $message): void
 {
     $_SESSION['error'][$key] = $message;
 };
-function hasError(string $key ): bool
+function hasError(string $key): bool
 {
     if (!empty($_SESSION['error'][$key]))  return true;
 
     return false;
 }
-function showError(string $key ): string
+function showError(string $key): string
 {
     $message = $_SESSION['error'][$key];
     unset($_SESSION['error'][$key]);
     return $message;
 };
-
+function validationStart()
+{
+    $_SESSION['old']=$_POST;
+};
+function validationEnd()
+{
+    if (hasSession("error")) {
+        redirectBackToLatestLocation();
+       }
+};
 //validation handling functions end

@@ -10,6 +10,7 @@
             <div class="col">
                 <label for=" form-label">Your name</label>
                 <input type="text" class=" form-control" name="name" required>
+                
             </div>
             <div class="col">
                 <label for=" form-label">Your money</label>

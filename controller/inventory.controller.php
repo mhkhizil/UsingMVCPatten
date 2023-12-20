@@ -26,43 +26,42 @@ function create()
 };
 function store()
 {
+    validationStart();
     $name = $_POST['name'];
     if (empty(trim($_POST["name"]))) {
-        setError("name","Name is required");
+        setError("name", "Name is required");
     } elseif (strlen($_POST['name']) < 3) {
-        setError("name","name is too ashort");
+        setError("name", "name is too ashort");
     } elseif (strlen($_POST['name']) > 20) {
-        setError("name","name is too long");
+        setError("name", "name is too long");
     } elseif (!preg_match("/^[a-zA-Z0-9 ]*$/", $$_POST['name'])) {
-        setError("name","name only alloed num,char and space");
+        setError("name", "name only alloed num,char and space");
     };
 
     $stock = $_POST["stock"];
     if (empty(trim($_POST["stock"]))) {
-        setError("stock","stock is required");
+        setError("stock", "stock is required");
     } elseif (!is_numeric($_POST['stock'])) {
-        setError("stock","stock must be number");
-    } elseif (strlen($_POST['stock']) < 1) {
-        setError("stock","stock is too low");
+        setError("stock", "stock must be number");
+    } elseif (strlen($_POST['stock']) < 10) {
+        setError("stock", "stock is too low");
     } elseif (strlen($_POST['price']) > 999999) {
-        setError("stock","stock is too high");
+        setError("stock", "stock is too high");
     };
     $price = $_POST["price"];
     if (empty(trim($_POST["price"]))) {
-        setError("price","price is required");
+        setError("price", "price is required");
     } elseif (!is_numeric($_POST['price'])) {
-        setError("price","price must be number");
-    } elseif (strlen($_POST['price']) < 10) {
-        setError("price","price is too low");
+        setError("price", "price must be number");
+    } elseif (strlen($_POST['price']) < 100) {
+        setError("price", "price is too low");
     } elseif (strlen($_POST['price']) > 999999) {
-        setError("price","price is too high");
+        setError("price", "price is too high");
     }
-  if (hasSession("error")) {
-   dd("Go back ");
-  }
+
+    validationEnd();
+
     dd("data ready");
-  
- 
     run("INSERT INTO inventories(sname,price,stock) VALUES('$name','$price','$stock')");
     // setSession("File stored successfully!");
     // dd(showSession());
@@ -74,7 +73,7 @@ function delete()
     $sql = "DELETE  FROM inventories WHERE id=$id";
     run($sql);
     // setSession("File deleted successfully!");
-    return redirect($_SERVER["HTTP_REFERER"], "Item deleted successfully!"); //server htl ka htttp referer ka nout sone twr htr dl link ko pyn po py 
+    return redirectBackToLatestLocation("Item deleted successfully!"); //server htl ka htttp referer ka nout sone twr htr dl link ko pyn po py 
 }
 function edit()
 {

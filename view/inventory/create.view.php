@@ -9,15 +9,30 @@
         <div class=" row align-items-end">
             <div class="col">
                 <label for=" form-label">Item name</label>
-                <input type="text" class=" form-control" name="name" >
+                <input type="text" class=" form-control <?= hasError("name") ? "is-invalid" : "" ?>" name="name">
+                <?php if (hasError("name")) : ?>
+                    <div class=" invalid-feedback">
+                        <?= showError("name") ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="col">
                 <label for=" form-label">Price</label>
-                <input type="number" class=" form-control" name="price" >
+                <input type="number" class=" form-control <?= hasError("price") ? "is-invalid" : "" ?>" name="price">
+                <?php if (hasError("price")) : ?>
+                    <div class=" invalid-feedback">
+                        <?= showError("price") ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="col">
                 <label for=" form-label">Stock</label>
-                <input type="number" class=" form-control" name="stock" >
+                <input type="number" class=" form-control <?= hasError("stock") ? "is-invalid" : "" ?>" name="stock">
+                <?php if (hasError("stock")) : ?>
+                    <div class=" invalid-feedback">
+                        <?= showError("stock") ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="col">
                 <button class=" btn btn-primary w-100 btn-lg">Add Item</button>
