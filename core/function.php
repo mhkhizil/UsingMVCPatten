@@ -261,12 +261,23 @@ function showError(string $key): string
 };
 function validationStart()
 {
-    $_SESSION['old']=$_POST;
+    $_SESSION['old'] = $_POST;
 };
+function oldData(string $key)
+{
+    if (isset($_SESSION['old'][$key])) {
+        $data = $_SESSION['old'][$key];
+        unset($_SESSION['old'][$key]);
+        return $data;
+    }
+    return null;
+}
 function validationEnd()
 {
     if (hasSession("error")) {
         redirectBackToLatestLocation();
-       }
+    }else {
+        unset($_SESSION['old']);
+    }
 };
 //validation handling functions end

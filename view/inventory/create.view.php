@@ -9,7 +9,7 @@
         <div class=" row align-items-end">
             <div class="col">
                 <label for=" form-label">Item name</label>
-                <input type="text" class=" form-control <?= hasError("name") ? "is-invalid" : "" ?>" name="name">
+                <input value="<?= oldData('name') ?>" type="text" class=" form-control <?= hasError("name") ? "is-invalid" : "" ?>" name="name">
                 <?php if (hasError("name")) : ?>
                     <div class=" invalid-feedback">
                         <?= showError("name") ?>
@@ -18,7 +18,7 @@
             </div>
             <div class="col">
                 <label for=" form-label">Price</label>
-                <input type="number" class=" form-control <?= hasError("price") ? "is-invalid" : "" ?>" name="price">
+                <input value="<?= oldData('price') ?>" type="number" class=" form-control <?= hasError("price") ? "is-invalid" : "" ?>" name="price">
                 <?php if (hasError("price")) : ?>
                     <div class=" invalid-feedback">
                         <?= showError("price") ?>
@@ -27,7 +27,7 @@
             </div>
             <div class="col">
                 <label for=" form-label">Stock</label>
-                <input type="number" class=" form-control <?= hasError("stock") ? "is-invalid" : "" ?>" name="stock">
+                <input value="<?= oldData('stock') ?>" type="number" class=" form-control <?= hasError("stock") ? "is-invalid" : "" ?>" name="stock">
                 <?php if (hasError("stock")) : ?>
                     <div class=" invalid-feedback">
                         <?= showError("stock") ?>
