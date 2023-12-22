@@ -43,7 +43,7 @@ function store()
         setError("stock", "stock is required");
     } elseif (!is_numeric($_POST['stock'])) {
         setError("stock", "stock must be number");
-    } elseif (strlen($_POST['stock']) < 10) {
+    } elseif (strlen($_POST['stock']) < 1) {
         setError("stock", "stock is too low");
     } elseif (strlen($_POST['price']) > 999999) {
         setError("stock", "stock is too high");
@@ -53,7 +53,7 @@ function store()
         setError("price", "price is required");
     } elseif (!is_numeric($_POST['price'])) {
         setError("price", "price must be number");
-    } elseif (strlen($_POST['price']) < 100) {
+    } elseif (strlen($_POST['price']) < 1) {
         setError("price", "price is too low");
     } elseif (strlen($_POST['price']) > 999999) {
         setError("price", "price is too high");
@@ -61,7 +61,7 @@ function store()
 
     validationEnd();
 
-    dd("data ready");
+
     run("INSERT INTO inventories(sname,price,stock) VALUES('$name','$price','$stock')");
     // setSession("File stored successfully!");
     // dd(showSession());

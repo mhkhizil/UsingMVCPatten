@@ -208,7 +208,7 @@ function hasSession(string $key = "message"): bool
 
     return false;
 }
-function showSession(string $key = 'message'): string
+function showSession(string $key = 'message'): string |array
 {
     $message = $_SESSION[$key];
     unset($_SESSION[$key]);
@@ -259,11 +259,13 @@ function showError(string $key): string
     unset($_SESSION['error'][$key]);
     return $message;
 };
-function validationStart()
+function validationStart(): void
 {
+    unset($_SESSION['old']);
+    unset($_SESSION['error']);
     $_SESSION['old'] = $_POST;
 };
-function oldData(string $key)
+function oldData(string $key): string|null
 {
     if (isset($_SESSION['old'][$key])) {
         $data = $_SESSION['old'][$key];
@@ -272,11 +274,17 @@ function oldData(string $key)
     }
     return null;
 }
-function validationEnd()
+function validationEnd(bool $isApi = false): void
 {
     if (hasSession("error")) {
-        redirectBackToLatestLocation();
-    }else {
+        if ($isApi) {
+            responseJson(showSession("error"));
+        } else {
+            redirectBackToLatestLocation();
+           
+        }
+        die();
+    } else {
         unset($_SESSION['old']);
     }
 };
